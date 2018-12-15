@@ -5,7 +5,7 @@ let fs = require('fs');
 let https = require('https');
 
 let app = express();
-let weather = new ForecastIo('API KEY');
+let weather = new ForecastIo('5329fab057cc706148aa92312cf174d3');
 
 const options = {
 	key: fs.readFileSync('certs/client-key.pem'),
@@ -37,7 +37,7 @@ app.get(/^\/([-\d.]+)\/([-\d.]+)$/, function(req, res, next) {
 		}
 
 		res.json({
-			summary: data.currently.drizzle,
+			summary: data.currently.summary,
 			temperature: data.currently.temperature
 		});
 	});
