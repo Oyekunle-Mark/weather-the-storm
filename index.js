@@ -2,9 +2,15 @@ let path = require('path');
 let express = require('express');
 let ForecastIo = require('forecastio');
 let fs = require('fs');
+let https = require('https');
 
 let app = express();
 let weather = new ForecastIo('API KEY');
+
+const options = {
+	key: fs.readFileSync('certs/client-key.pem'),
+	cert: fs.readFileSync('certs/client-cert.pem')
+};
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
@@ -41,6 +47,6 @@ app.use(function(req, res) {
 	res.status(404).render('404');
 });
 
-app.listen(3000, function() {
+https.createServer(options, app).listen(3000, function() {
 	console.log('The weather forecast app started on port 3000.');
 });
