@@ -27,7 +27,7 @@ $(document).ready(function() {
 				let temperature = data.temperature;
 				let summary = data.summary;
 
-				$h1.html('It is ' + temperature + '&#176; in your location. ' + '<br />' + 'The weather summary is: ' + summary);
+				$h1.html('It is ' + temperature + '&#176;C at your location. ' + '<br />' + 'Summary: ' + summary);
 			});
 
 			request.fail(function() {

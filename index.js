@@ -5,7 +5,7 @@ let fs = require('fs');
 let https = require('https');
 
 let app = express();
-let weather = new ForecastIo('5329fab057cc706148aa92312cf174d3');
+let weather = new ForecastIo(fs.readFileSync('certs/api_key');
 
 const options = {
 	key: fs.readFileSync('certs/client-key.pem'),
@@ -29,8 +29,12 @@ app.get(/^\/([-\d.]+)\/([-\d.]+)$/, function(req, res, next) {
 		next();
 		return;
 	}
-
-	weather.forecast(latitude, longitude, function(err, data) {
+    
+    const options = {
+        units: 'si'
+    }
+    
+	weather.forecast(latitude, longitude, options, function(err, data) {
 		if (err) {
 			next();
 			return;
