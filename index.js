@@ -5,7 +5,7 @@ let fs = require('fs');
 let https = require('https');
 
 let app = express();
-let weather = new ForecastIo(fs.readFileSync('certs/api_key');
+let weather = new ForecastIo(fs.readFileSync('certs/api_key'));
 
 const options = {
 	key: fs.readFileSync('certs/client-key.pem'),
